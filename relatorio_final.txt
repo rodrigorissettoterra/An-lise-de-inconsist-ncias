@@ -1,0 +1,58 @@
+### Relatório Final de Análise de Dados ###
+
+Valores nulos em 'Transações':COD_CLI            203
+DATA_COMPRA          0
+DT_ENTREGA         288
+PRODUTO            841
+VALOR_FATURADO    1162
+LOCAL              665
+Registros duplicados em 'Transações': 0Produtos inválidos em 'Transações': 3152Locais inválidos em 'Transações': 4562PARECER FINAL:
+
+A análise realizada sobre o conjunto de dados de transações de vendas revelou uma série de inconsistências que comprometem a integridade e a confiabilidade das informações disponíveis. Inicialmente, observou-se a presença significativa de valores nulos em colunas críticas, como <code>COD_CLI</code>, <code>PRODUTO</code>, <code>LOCAL</code>, e <code>VALOR_FATURADO</code>. **Esses valores podem indicar falhas no processo de coleta de dados ou lacunas no preenchimento, o que dificulta a análise aprofundada e a utilização do conjunto de dados para decisões estratégicas**.
+</br>Além disso, identificou-se produtos e locais inválidos em relação às tabelas de referência fornecidas. Aproximadamente 3.152 registros possuem códigos de produtos que não estão mapeados na base oficial de produtos, enquanto cerca de 4.562 registros apresentam códigos de locais inexistentes. **Esses problemas sugerem possíveis falhas no processo de validação durante a inserção dos dados, permitindo o uso de identificadores incorretos ou ausentes**.
+</br>Por outro lado, não foram identificados registros duplicados em nenhuma das tabelas analisadas, o que é um ponto positivo em termos de consistência estrutural. No entanto, a ausência de registros duplicados não compensa os problemas relacionados à integridade referencial e aos valores ausentes.
+</br>Em termos gerais, o diagnóstico revela que o conjunto de dados está longe de ser plenamente confiável para uso analítico, exigindo ações corretivas em diferentes frentes. Os problemas encontrados apontam para uma necessidade urgente de revisão dos processos que geram, coletam e armazenam as informações, garantindo que elas atendam aos padrões mínimos de qualidade de dados.
+
+
+Sugestões para a melhoria:
+
+Com base nos problemas identificados, sugerimos as seguintes ações para melhorar a integridade e a confiabilidade do conjunto de dados:
+
+###1. Tratar Valores Nulos
+
+- **Implementar validação obrigatória:** Certifique-se de que as informações essenciais (como <code>COD_CLI</code>, <code>PRODUTO</code>, <code>LOCAL</code> e <code>VALOR_FATURADO</code>) sejam preenchidas no momento do registro.
+- **Revisar dados históricos:** Tentar identificar fontes alternativas de informação para preencher os valores ausentes, como registros paralelos ou bases externas.
+
+**Estratégias de imputação:**
+  - Para campos como <code>VALOR_FATURADO</code>, considere usar a média ou mediana de valores similares para preencher os registros nulos.
+  - Para <code>COD_CLI</code> ou <code>PRODUTO</code>, avalie se há padrões nos dados que permitam inferir o valor correto.
+
+
+###2. Corrigir Produtos e Locais Inválidos
+
+- **Revisar a tabela de transações:** Identifique e corrija os registros que possuem códigos inválidos de produtos e locais. Utilize validação automática para impedir a inserção de valores inexistentes.
+- **Atualizar tabelas de referência:** Verifique se a base de produtos e a base de locais estão completas e atualizadas, e sincronize-as com a tabela de transações.
+- **Treinamento de equipes:** Garanta que os responsáveis pelo preenchimento de dados conheçam as tabelas de referência e utilizem apenas os códigos válidos.
+
+
+###3. Prevenção de Problemas Futuros
+
+- **Automatização de processos:** Adote sistemas de entrada de dados que validem automaticamente os valores inseridos, cruzando-os com as tabelas de referência em tempo real.
+- **Monitoramento contínuo:** Implemente um sistema de auditoria para identificar e corrigir inconsistências em tempo hábil.
+- **Padronização:** Garanta que os dados sejam inseridos de forma padronizada, eliminando variações que possam causar problemas (como diferentes formatos de datas ou códigos).
+
+
+###4. Melhoria na Governança de Dados
+
+- **Políticas de qualidade de dados:** Estabeleça políticas claras para o gerenciamento e a manutenção da integridade das bases de dados.
+- **Revisão periódica:** Realize auditorias frequentes nos dados para identificar problemas antes que se tornem críticos.
+- **Centralização das tabelas de referência:** Certifique-se de que produtos e locais sejam gerenciados de forma centralizada, evitando inconsistências causadas por múltiplas versões.
+
+
+### 5. Documentação
+
+- Desenvolva uma documentação detalhada sobre o fluxo de dados e as tabelas de referência, permitindo que todos os envolvidos no processo compreendam as regras e padrões aplicados.
+
+
+Equipe responsável:
+Equipe de análise de dados
